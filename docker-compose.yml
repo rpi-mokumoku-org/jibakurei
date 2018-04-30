@@ -1,0 +1,27 @@
+version: '3.2'
+
+services:
+  itako:
+    container_name: itako
+    image: node
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./itako:/var/app"
+      - "/etc/localtime:/etc/localtime:ro"
+    working_dir: /var/app
+    command: [sh, -c, npm install && npm start]
+    privileged: true
+
+  shaman:
+    container_name: shaman
+    image: node
+    ports:
+      - "3001:3001"
+    volumes:
+      - "./shaman:/var/app"
+      - "/etc/localtime:/etc/localtime:ro"
+    working_dir: /var/app
+    command: [sh, -c, npm install && npm start]
+    privileged: true
+
